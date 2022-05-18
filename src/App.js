@@ -1,7 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Toaster } from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { showToast } from "./action";
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    dispatch(showToast("Failed to do something!", "error", 2000));
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +27,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <Toaster position="bottom-right" />
     </div>
   );
 }
